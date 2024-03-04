@@ -16,7 +16,7 @@ public class IBankTest {
 
     @Test
     void shouldEnter() {
-        DataGen.RegistrationDto registeredUser = DataGen.Registration.getRegisteredUser("active");
+        var registeredUser = DataGen.Registration.getRegisteredUser("active");
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("[data-test-id='action-login']").click();
@@ -68,8 +68,8 @@ public class IBankTest {
     @Test
     void emptyFields() {
         $("[data-test-id='action-login']").click();
-        $(".input_type_text > span:nth-child(1) > span:nth-child(3)").shouldHave(Condition.text("Поле обязательно для заполнения"));
-        $(".input_type_password > span:nth-child(1) > span:nth-child(3)").shouldHave(Condition.text("Поле обязательно для заполнения"));
+        $("[data-test-id='login'] .input__sub").shouldHave(Condition.text("Поле обязательно для заполнения"));
+        $("[data-test-id='password'] .input__sub").shouldHave(Condition.text("Поле обязательно для заполнения"));
 
     }
 }
